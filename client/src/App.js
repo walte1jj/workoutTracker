@@ -1,8 +1,11 @@
 import React from 'react';
+import Register from '.Register';
 
 function App() {
   return (
-    <Router>
+    <main className="App">
+      <Register />
+      <Router>
       <Navbar />
       <br />
       <div classname = "container">
@@ -12,6 +15,7 @@ function App() {
         <Route path = "/user" component = { CreateUser } />
       </div>
     </Router>
+    </main>
   );
 }
 
