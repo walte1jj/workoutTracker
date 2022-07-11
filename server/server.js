@@ -13,11 +13,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database
-const uri = process.env.MONGO_URI;
-mongoose.connect(uri, {
+// const uri = process.env.MONGO_URI;
+// mongoose.connect(uri, {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+// });
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workouttracker', {
   useNewUrlParser: true,
-  useCreateIndex: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 mongoose.connection.once('open', () =>
