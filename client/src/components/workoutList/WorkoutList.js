@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-dom/client";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -36,9 +36,6 @@ export default function WorkoutList() {
                 key = { currentWorkout._id } />
         })
     }
-
-
-
     return(
     <div>
         <h3>Logged workouts</h3>
