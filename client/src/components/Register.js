@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, FaInfoCircle, faInfoCircle, faInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from './api/axios';
+import axios from '../api/axios';
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9- _]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8, 24}$/;
@@ -11,12 +11,12 @@ const Register = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, Setuser] = useState('');
+    const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
     const [userFocus, setUserFocus] = useState(false);
 
     const [pwd, setPwd] = useState('');
-    const [validPWD, setValidPwd] = useState(false);
+    const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);
 
     const [matchPwd, setMatchPwd] = useState('');
@@ -63,7 +63,7 @@ const Register = () => {
          const response = await axios.post(Register_URL, 
                 JSON.stringify({ user, pwd }),
                 {
-                    headers: { 'Content-Type': 'application/json'}
+                    headers: { 'Content-Type': 'application/json'},
                     withCredentials: true
                 }
             );
@@ -178,7 +178,7 @@ const Register = () => {
                 Passwords must match.
             </p>
 
-            <button disabled={!validName || !validPWD || !validMatch ? true : false}>Sign Up</button>
+            <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
             </form>
             <p>
                 Already registered?<br />

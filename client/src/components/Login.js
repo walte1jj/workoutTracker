@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from "./context/AuthProvider";
+import React, { useRef, useState, useEffect, useContext } from 'react';
+import AuthContext from "../context/AuthProvider";
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
@@ -19,12 +19,13 @@ const Login = () => {
         setErrMsg('');
     }, [user, pwd])
 
-    const handleSubmit = async (e) =>
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(user, pwd);
         setUser('');
         setPwd('');
         setSuccess(true);
+    }
 
      return (
         <>
