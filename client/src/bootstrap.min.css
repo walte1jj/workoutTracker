@@ -1,0 +1,72 @@
+/*!
+ * Bootswatch v5.1.3
+ * Homepage: https://bootswatch.com
+ * Copyright 2012-2021 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+*//*!
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap);
+ :root{--bs-blue:#007bff;
+    --bs-indigo:#6610f2;
+    --bs-purple:#6f42c1;
+    --bs-pink:#e83e8c;
+    --bs-red:#ff7851;
+    --bs-orange:#fd7e14;
+    --bs-yellow:#ffce67;
+    --bs-green:#56cc9d;
+    --bs-teal:#20c997;
+    --bs-cyan:#6cc3d5;
+    --bs-white:#fff;
+    --bs-gray:#555;
+    --bs-gray-dark:#343a40;
+    --bs-gray-100:#f8f9fa;
+    --bs-gray-200:#f7f7f9;
+    --bs-gray-300:#eceeef;
+    --bs-gray-400:#ced4da;
+    --bs-gray-500:#aaa;
+    --bs-gray-600:#888;
+    --bs-gray-700:#5a5a5a;
+    --bs-gray-800:#343a40;
+    --bs-gray-900:#212529;
+    --bs-primary:#78c2ad;
+    --bs-secondary:#f3969a;
+    --bs-success:#56cc9d;
+    --bs-info:#6cc3d5;
+    --bs-warning:#ffce67;
+    --bs-danger:#ff7851;
+    --bs-light:#f8f9fa;
+    --bs-dark:#343a40;
+    --bs-primary-rgb:120,194,173;
+    --bs-secondary-rgb:243,150,154;
+    --bs-success-rgb:86,204,157;
+    --bs-info-rgb:108,195,213;
+    --bs-warning-rgb:255,206,103;
+    --bs-danger-rgb:255,120,81;
+    --bs-light-rgb:248,249,250;
+    --bs-dark-rgb:52,58,64;
+    --bs-white-rgb:255,255,255;
+    --bs-black-rgb:0,0,0;
+    --bs-body-color-rgb:136,136,136;
+    --bs-body-bg-rgb:255,255,255;
+    --font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+};
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+    
