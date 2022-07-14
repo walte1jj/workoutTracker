@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-dom/client";
+import { Link } from "react-router-dom";
+//import { Link } from "react-dom/client";
 import axios from "axios";
 
 const Workout = props => (
