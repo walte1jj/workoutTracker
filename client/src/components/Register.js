@@ -86,7 +86,7 @@ const Register = () => {
      
     return (
         <>
-        {success} ? (
+        {success ? (
             <section>
                 <h1>Success!</h1>
                 <p>
@@ -94,25 +94,27 @@ const Register = () => {
                 </p>
             </section>
         ) : (
-        <section>
-            <p ref={errRef} className={errMsg ? "errmsg" :
-            "offscreen"} aria-live="assertive">{errMsg}</p>
+        <section style={{width: "100vw", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            {/* <p ref={errRef} className={errMsg ? "errmsg" :
+            "offscreen"} aria-live="assertive">{errMsg}</p> */}
+            <div style={{display: "flex", flexDirection: "column"}}>
             <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">
+            <form onSubmit={handleSubmit} style={{display: "flex", flexDirection: "column"}}>
+                {/* <label htmlFor="username">
                     Username:
-                    <span className={validName ? "valid" : "hide"}>
+                    {/* <span className={validName ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
                     <span className={validName || !user ? "hide" :
                     "invalid"}>
                         <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                </label>
+                    </span> */}
+                {/* </label>  */}
                 <input
                     type="text"
                     id="username"
                     ref={userRef}
+                    placeholder="Username"
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
                     required
@@ -121,21 +123,23 @@ const Register = () => {
                     onFocus={() => setUserFocus(true)}
                     onBlur={() => setUserFocus(false)}
                 />
-                <p id="uidnote" className={userFocus && user &&
+                {/* <p id="uidnote" className={userFocus && user &&
                 !validName ? "instructions" : "offscreen"}>
                     <FontAwesomeIcon icon={faInfoCircle} />
                     4 to 24 characters.<br />
                     Must begin with a letter.<br />
                     Letters, numbers, underscores, hyphens allowed.
-                </p>
+                </p> */}
 
-                <label htmlFor="password">
-                    <span className={validPwd ? "valid" : "hide"}>
+                {/* <label htmlFor="password">
+                    Password */}
+                    {/* <span className={validPwd ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faTimes} />
-                    </span>
-                </label>
+                    </span> */}
+                {/* </label> */}
                 <input
                     type="password"
+                    placeholder="Password"
                     id="password"
                     onChange={(e) => setPwd(e.target.value)}
                     required
@@ -144,7 +148,7 @@ const Register = () => {
                     onFocus={() => setPwdFocus(true)}
                     onBlur={() => setPwdFocus(false)}
                 />
-                <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : 
+                {/* <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : 
                 "offscreen"}>
                     <FontAwesomeIcon icon={faInfoCircle} />
                     8 to 24 characters.<br />
@@ -152,19 +156,20 @@ const Register = () => {
                     Allowed special characters: <span aria-label="exclamation mark">!</span>
                     <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span>
                     <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
-                </p>
+                </p> */}
 
-                <label htmlFor="confirm_pwd">
-                    Confirm Password:
-                    <span className={validMatch && matchPwd ? "valid" : "hide"}>
+                {/* <label htmlFor="confirm_pwd">
+                    Confirm Password: */}
+                    {/* <span className={validMatch && matchPwd ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
                     <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
-                    </span>
-                </label>
+                    </span> */}
+                {/* </label> */}
                 <input
                 type="password"
                 id="confirm_pwd"
+                placeholder="Confirm Password"
                 onChange={(e) => setMatchPwd(e.target.value)}
                 required
                 aria-onInvalid={validMatch ? "false" : "true"}
@@ -174,7 +179,7 @@ const Register = () => {
             />
             <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" :
             "offscreen"}>
-                <FontAwesomeIcon icon={faInfoCircle} />
+                {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
                 Passwords must match.
             </p>
 
@@ -187,9 +192,10 @@ const Register = () => {
                         <a href="#">Sign In</a>
                     </span>
                 </p>
+                </div>
             </section>
            )
-        
+                }
         </>
     )
 }

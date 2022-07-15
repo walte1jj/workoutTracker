@@ -1,58 +1,65 @@
-import React, { useEffect, useState  } from "react";
-import DatePicker from "react-datepicker";
+import React, {Component} from "react";
+import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, renderMatches } from "react-router-dom";
 
-export default function CreateWorkout() {
-    const [username, setUsername] = useState("");
-    const [description, setDescription] = useState("");
-    const [duration, setDuration] = useState("");
-    const [date, setDate] = useState("");
-    const [users, setUsers] = useState("");
+class createWorkout extends Component {
+	constructor(){
+		super()
 
-    useEffect(() => {
-        axios.get("http://localhost:5000/users")
-        .then(response => {
-            if (response.data.length > 0) {
-                setUsername(response.data[0].username)
-                users(response.data.map(user => user.username))
-            }
-        })
-        .catch(err => console.error(err))
-    })
+	    this.state = {
+	      username: '',
+	      description: '',
+	      duration: 0,
+	      date: new Date(),
+	      users: []
+	    }
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+		this.onChangeUsername = this.onChangeUsername.bind(this);
+	    this.onChangeDescription = this.onChangeDescription.bind(this);
+	    this.onChangeDuration = this.onChangeDuration.bind(this);
+	    this.onChangeDate = this.onChangeDate.bind(this);
+	    this.onSubmit = this.onSubmit.bind(this);
+	}
 
-    const onChangeUsername = ((e) => {
+	componentDidMount(){
+		axios.get('http://localhost:5000/users')
+			.then(res => {
+				if(res.data.length){
+					this.setState({
+						users: res.data.map(user => user.username),
+						username: res.data[0].username
+					})
+				}
+			})
+			.catch(error => console.log(error))
+	}
+    onChangeUsername = ((e) => {
         this.useState({
             username: e.target.value
         })
     })
 
-    const onChangeDescription = (e) => {
+    onChangeDescription = (e) => {
         this.useState({
             description: e.target.value
         })
     }
 
-    const onChangeDuration = (e) => {
+    onChangeDuration = (e) => {
         this.useState({
             duration: e.target.value
         })
     }
 
-    const onChangeDate = (date) => {
+    onChangeDate = (date) => {
         this.useState({
             date: date
         })
     }
 
-    const onSubmit = (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
 
         const state = this.state;
@@ -71,23 +78,63 @@ export default function CreateWorkout() {
         window.location = "/";
         }
 
+        render() {
         return (
             <div>
-                <h3>Create User</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username:</label>
-                        <input
-                            ref={this.userInput}
-                            required
-                            className="form-control"
-                            value={this.state.username}
-                            onChange={this.onChangeUsername} />
-                    </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Create User</button>
-                    </div>
-                </form>
+              <h3>Create New Exercise Log</h3>
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group"> 
+                  <label>Username: </label>
+                  <select ref="userInput"
+                      required
+                      className="form-control"
+                      value={this.state.username}
+                      onChange={this.onChangeUsername}>
+                      {
+                        this.state.users.map(function(user) {
+                          return <option 
+                            key={user}
+                            value={user}>{user}
+                            </option>;
+                        })
+                      }
+                  </select>
+                </div>
+                <div className="form-group"> 
+                  <label>Description: </label>
+                  <input  type="text"
+                      required
+                      className="form-control"
+                      value={this.state.description}
+                      onChange={this.onChangeDescription}
+                      />
+                </div>
+                <div className="form-group">
+                  <label>Duration (in minutes): </label>
+                  <input 
+                      type="text" 
+                      className="form-control"
+                      value={this.state.duration}
+                      onChange={this.onChangeDuration}
+                      />
+                </div>
+                <div className="form-group">
+                  <label>Date: </label>
+                  <div>
+                    <DatePicker
+                      selected={this.state.date}
+                      onChange={this.onChangeDate}
+                    />
+                  </div>
+                </div>
+        
+                <div className="form-group">
+                  <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+                </div>
+              </form>
             </div>
-        )    
-};
+            )    
+                    }
+        };
+
+export default createWorkout;

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider";
+import { loginUser } from '../api/API';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        loginUser(user, pwd);
         console.log(user, pwd);
         setUser('');
         setPwd('');

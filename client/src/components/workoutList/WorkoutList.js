@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-dom/client";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 import Workout from "../Workout/Workout";
 
 export default function WorkoutList() {
-
+console.log('Im rendered');
     const [workouts, setWorkouts] = useState([])
 
     useEffect(() => {
